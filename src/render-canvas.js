@@ -196,8 +196,8 @@ function drawGradientTriangle(graphics, v1, v2, v3, colors, fillFunction, fillX,
 exports.renderPolygons = function (graphics, colors, gradientFillProperty, colorOverrideFunction, map, noisyEdges)  {
     // My Voronoi polygon rendering doesn't handle the boundary
     // polygons, so I just fill everything with ocean first.
-    graphics.fillStyle = colorModule.intToHexColor(colors.OCEAN);
-    graphics.fillRect(0, 0, core.toInt(map.SIZE.width), core.toInt(map.SIZE.height));
+    //graphics.fillStyle = colorModule.intToHexColor(colors.OCEAN);
+    //graphics.fillRect(0, 0, core.toInt(map.SIZE.width), core.toInt(map.SIZE.height));
  
     var drawPath0 = function (graphics, x, y) {
         var path = noisyEdges.path0[edge.index];

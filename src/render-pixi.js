@@ -144,7 +144,7 @@ exports.renderPolygons = function (context, colors, gradientFillProperty, colorO
 
     // My Voronoi polygon rendering doesn't handle the boundary
     // polygons, so I just fill everything with ocean first.
-    graphics.drawRect(0, 0, map.SIZE.width, map.SIZE.height);
+    //graphics.drawRect(0, 0, map.SIZE.width, map.SIZE.height);
 
     context.root.addChild(graphics);
     graphics = new PIXI.Graphics();

@@ -320,6 +320,10 @@ var mapModule = function (size) {
             edge.river = 0;
             pub.edges.push(edge);
             edge.midpoint = (vedge.p0 !== null && vedge.p1 !== null) ? pc.interpolate(vedge.p0, vedge.p1, 0.5) : null;
+            edge.infinite = false;
+            if (edge.midpoint === null){
+                edge.infinite = true;
+            }
           
             // Edges point to corners. Edges point to centers. 
             edge.v0 = makeCorner(vedge.p0);
@@ -500,8 +504,9 @@ var mapModule = function (size) {
             _(p.corners).each(function (q) {
                 if (q.border) {
                     p.border = true;
-                    p.ocean = true;
-                    q.water = true;
+                    //p.ocean = true;
+                    //q.water = true;
+                    //don't make every border into ocean
                     queue.push(p);
                 }
                 if (q.water) {
@@ -548,7 +553,7 @@ var mapModule = function (size) {
             });
             q.ocean = (numOcean === q.touches.length);
             q.coast = (numOcean > 0) && (numLand > 0);
-            q.water = q.border || ((numLand !== q.touches.length) && !q.coast);
+            q.water = ((numLand !== q.touches.length) && !q.coast);
         });
     };
 
